@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
     while (cardsGenerated) {
       const valueCard = Math.floor(Math.random() * (3)) + 1;
-      if (this.cards.filter(x => x.value == valueCard).length < 2) {
+      if (this.cards.filter(card => card.value == valueCard).length < 2) {
         this.cards.push(new Card(this.cards.length + 1, valueCard, '/assets/images/' + valueCard + '.jpeg', false));
       }
 
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
   dismissSameCards() {
     return new Promise(resolve => {
       setTimeout(() => {
-        resolve(this.cards.filter(item => item.value !== this.selectedCard[0]));
+        resolve(this.cards.filter(card => card.value !== this.selectedCard[0]));
         this.selectedCard = [];
       }, 2000);
     });
@@ -70,8 +70,8 @@ export class AppComponent implements OnInit {
   downAllCards() {
     return new Promise(() => {
       setTimeout(() => {
-        this.cards.forEach((el) => {
-          el.isOpen = false;
+        this.cards.forEach((card) => {
+          card.isOpen = false;
         })
         this.selectedCard = [];
       }, 2000);
