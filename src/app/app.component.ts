@@ -17,7 +17,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.buildMessageDialog('Welcome to Memory Cards Game', 'Do you want to play? just click on yes to start game', 'middle');
+    this.buildMessageDialog('Welcome to Memory Cards Game',
+      'Do you want to play? just click on yes to start game',
+       'middle');
   }
 
   async evaluate(card: Card) {
@@ -87,7 +89,7 @@ export class AppComponent implements OnInit {
       accept: () => {
         this.generateCards();
       },
-      reject: (type: any) => {
+      reject: (type: ConfirmEventType) => {
         switch (type) {
           case ConfirmEventType.REJECT:
             this.messageService.add({severity: 'error', summary: 'Rejected', detail: 'You have rejected'});

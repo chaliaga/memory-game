@@ -1,14 +1,11 @@
 <div class="card">
-  <div class="flex flex-wrap justify-content-center card-container blue-container cardId">
+  <div class="flex flex-wrap justify-content-center card-container blue-container card">
     <ng-template ngFor let-card [ngForOf]="cards">
       <div id="{{card.id}}"
-           class="flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 w-10rem h-10rem border-round"
+           class="cardTop flex align-items-center justify-content-center bg-blue-500 font-bold text-white m-2 w-10rem h-10rem border-round"
            (click)="evaluate(card)">
-        <ng-template [ngIf]="card.isOpen" [ngIfElse]="showValue">
-          <img class="cardImage" src="{{card.url}}" title="{{ card.value }}" alt="card logo"/>
-        </ng-template>
-        <ng-template #showValue>
-          <span class="text-5xl">{{card.value}}</span>
+        <ng-template [ngIf]="card.isOpen">
+          <img class="cardImage" src="{{card.url}}" alt="card logo"/>
         </ng-template>
       </div>
     </ng-template>
